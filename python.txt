@@ -260,3 +260,4 @@ Data types are built in in python hence it supports dynamic typing.
         1. 1D array : a1.shape = (4,)
         2. 2D array : A.shape = (2,4)
     itemsize returns the length of each elelment of array in bytes
+    
