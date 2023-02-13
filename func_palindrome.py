@@ -1,5 +1,4 @@
 def isPal(n):
-    #m=n
     temp=0
     j=len(n)-1
     i=0
