@@ -357,3 +357,86 @@ Data types are built in in python hence it supports dynamic typing.
         8. Standard Deviation : its function is present in numpy std()
 
         9. variance : var() function in numpy   
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--> PANDAS :
+
+    Derived from panel data system.
+    It is a python library for data analysis.
+    Data analysis is the process of evaluating big data stes using analytical and statistical tools.
+
+    In order to work with pandas , we need to import it.
+    import pandas as pd
+    
+    ** PANDAS DATA STRUCTURE **
+
+    1. SERIES : 
+        It represents 1D array of indexed data.
+        it has two components : array of actual data
+                                array of indices or data labels
+        Both components are 1D array of same length
+
+        ==> Create empty series object by series() with no parameter: <Series_obj> = pandas.Series()
+            The above syntax will create a series with float64 data type.
+
+        ==> Create a non-empty Series object:  <Series_obj> = pd.Series(data , index=idx)
+                                               idx is valid numpy datatype
+                                               data can be sequence,dictionary,ndarray,scalar value.
+
+            (i) Specify data as Python Sequence : <series_obj> = Series(<any python sequence>)
+                It will return an object of Sreies type
+
+            (ii) Specify data as an ndarray : <series_obj> = Series(<any python ndarray>)
+
+            (iii) Specify data as a Python Dictionary : <series_obj> = Series(<any python dictionary>)
+
+            (iv) Specify data as a Scalar value : <series_obj> = Series(value to be repeated , index to be given)
+            
+        ==> Additional functionality of Series() : 
+
+            (i) Specifying NaN values in a series object: 
+                    sometimes we don't have full data needed for a project.
+                    In this case u can fill missing data by NaN value.
+                    NaN is defined in NumPy module hence we can write np.NaN or None
+
+            (ii) Specify index as well as data with Series():
+                    We can specify index as well as value for index in Series type.
+                    Both value and index are sequences.
+                    <Series_obj> = pandas.Series(data = None, index=None)
+                    here we can skip writing data also.
+
+            (iii) Specifying Data type along with index and data:
+                    <series_obj> = pandas.Series(data=None, index=None,dtype=None)
+
+            (iv) Using a Mathematical Function/Expression to create data array in Series():
+                    <Series_obj> = pandas.Series(index=None, data=<function|expression>)
+
+            While creating index array sequence, we can duplicate the indexes. 
+
+        ==> Series Object attributes: <Series_obj>.<attribute_name>
+
+                1. index : index of series
+                2. index.name : used to assign new name to index
+                3. values : return series as ndarray
+                4. dtype : return datatype 
+                5. shape : return tuple of shape
+                6. nbytes : return number of bytes
+                7. ndim : return number of dimensions
+                8. size : return no. of elements
+                9. itemsize : return size of each item
+                10. hasnans : returns true if NaN values are there 
+                11. empty : returns true if series is empty
+                12. name: assign name to a Series object
+
+        ==> Accessing a series object and its elements : 
+
+            Accessing individual elements from series obj : <Series_obj>[<valid index>]
+            Extracting Slices from Series Object :  <Series_obj>[<valid range>]
+
+        ==> operations on Series Object : 
+
+            1. Modifying elements of series object : 
+                <Series_obj>[<index>] = <new_data>
+                <Series_obj>[start:stop] = <new_data>
+                
