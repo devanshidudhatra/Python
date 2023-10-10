@@ -1,1 +1,0 @@
-# program to find the strongest neighbour

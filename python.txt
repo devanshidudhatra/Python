@@ -179,6 +179,23 @@ Data types are built in in python hence it supports dynamic typing.
     max() : it returns the max value of the list.
     min() : it returns the min value from list
 
+    Built-in functions with List
+Function	            Description
+reduce()     	apply a particular function passed in its argument to all of the list elements stores the intermediate result and only returns the final summation value
+sum()	        Sums up the numbers in the list
+ord()	        Returns an integer representing the Unicode code point of the given Unicode character
+cmp()	        This function returns 1 if the first list is “greater” than the second list
+max()	        return maximum element of a given list
+min()	        return minimum element of a given list
+all()	        Returns true if all element is true or if the list is empty
+any()	        return true if any element of the list is true. if the list is empty, return false
+len()	        Returns length of the list or size of the list
+enumerate()	    Returns enumerate object of the list
+accumulate()	apply a particular function passed in its argument to all of the list elements returns a list containing the intermediate results
+filter()	    tests if each element of a list is true or not
+map()	        returns a list of the results after applying the given function to each item of a given iterable
+lambda()	    This function can have any number of arguments but only one expression, which is evaluated and returned.
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------    
 
 --> DICTIONARY : 
@@ -244,7 +261,7 @@ Data types are built in in python hence it supports dynamic typing.
                    l1 = [2,3,4]
                    arr1 = np.array(l1)
 
-    List eelments are separated by commas while array elements are not
+    List elements are separated by commas while array elements are not
 
     fromstring() : arr1 = np.fromstring('1 2 10 12' , dtype=int, sep=' ')
 
@@ -288,7 +305,7 @@ Data types are built in in python hence it supports dynamic typing.
         3. Using ones() : it returns a new array with all ones as elements
                           numpy.ones(shape , dtype=None , order='C')
 
-        to craete a 2D arrray with constant value : np.full(shape , value)
+        to create a 2D arrray with constant value : np.full(shape , value)
 
         4. Using arange() : it is used to create from a range
                              <array_name> = numpy.arange(start , stop , step , dtype)
@@ -439,4 +456,128 @@ Data types are built in in python hence it supports dynamic typing.
             1. Modifying elements of series object : 
                 <Series_obj>[<index>] = <new_data>
                 <Series_obj>[start:stop] = <new_data>
-                
+
+            2. Renaming Indexes : 
+                <object>.index = <new_index_array>
+                size should not change 
+
+            3. head() and tail() functions : 
+                head() is used to fetch first n rows :: <pandas_obj>.head([n])
+                tail() returns last n rows :: <pandas_obj>.tail([n])
+
+            4. Vector Operations on Series objects : 
+                vector operations means that if u apply a function or expression then it is individually applied to each item
+
+            5. Arithmetic on Series Objects : 
+                Operations are performed only on matching indexes
+                for all other indexees it will produce NaN.
+                here, NaN represents missing data.
+
+            6. Filtering Enteries in Series Objects : 
+                <series_obj> [<Boolean expression on Series object>]
+
+            7. Sorting on the basis of values : 
+                <Series_obj>.sort_values([ascending=True/False])
+                u can also skip ascending argument
+
+            8. Sorting On the basis of Indexes : 
+                <Series_obj>.sort_index([ascending = True|False])
+
+        ==> Reindexing : we can change the order of the indices.:: obj.reindex()
+
+
+    2. DataFrame Data Structure :
+
+        It stores data in 2D way.
+        Characteristics of DataFrame data structure : 
+            1. It has 2 index : row(axis=0) and column(axis=1)
+            2. indexes can be number,string,letters
+            3. value mutable
+            4. size mutable
+
+        ==> CReating and displaying a dataframe : 
+
+            import pandas as pd
+            import numpy as np
+            <dataFrameObj> = panda.DataFrame(<2D data structure> , \[columns = <column sequence>] , [index=<index sequence>])
+            empty dataframe : DF1 = pd.DataFrame()
+            We can create dataframe of dictionary,series,ndarray,list, or other dataFrameObj
+            
+            (i) Creating a DataFrame Obj from 2D dictionary :
+                    dtf = pd.DataFrame(dict,index=None)
+
+            (ii) Creating DataFrame Obj from Dictionaries/Lists : 
+                    list = [dict1,dict2,...] 
+                    dtf = pd.DataFrame(list)
+
+            (iii) Creating a DataFrame from a 2D ndarray : 
+                    dtf = pd.DataFrame(ndarr , columns=[<it will give heading to col>] , index = [])
+
+            (iv) Creating a dtf from 2D dictionary with values as series objects : 
+                    series = pd.Series()
+                    dict = {'' : series}
+                    dtf = pd.DataFrame(dict)
+
+            (v) Creating a DataFrame Object from another DtaFrame Object : 
+                    dtf2 = pd.DataFrame(dft1)
+
+        ==> DataFrame Attributes : <DataFrameObj>.<attribute>
+
+            1. index : return index
+            2. columns : return column labels
+            3. axes : returns the list representing both axes
+            4. dtypes : return dtype
+            5. size : return size of dtype of each element 
+            6. shape : returns tuple 
+            7. values : return numpy representation
+            8. empty : indicates whether dtf is empty or not
+            9. ndim : return dimensions of the dtf
+            10. T : transpose of matrix
+
+        ==> Selecting or Accessing Data : 
+
+            1. Selecting/Accessing a Column : 
+                <DataFrameobj>[<col_name>] OR <DataFrameObj>.<col_name>
+
+            2. SElecting or Accessing multiple Columns : 
+                <DataFrameObj>[[col1,col2,...]]
+
+            3. Selecting/Accessing a subset from a Dtf using Row/Col Names : 
+                <DataFrame>.loc[<startrow>:<endrow> , <startcol>:<endcol>]
+
+                => To access a row : <DF>.loc[<row label> , :]
+                => To access multiple rows : <DF>.loc[<startrow> : <endrow> , :]
+                => To access selective columns : <DF>.loc[: ,<start col> : <end col>]
+                => To access range of columns from range of rows : <DF>.loc[<startrow> : <endrow> , <startcol> : <endcol>]
+
+            4. Selecting rows and cols from a DF : 
+                <DF>.iloc[<start row index> : <end row index> , <start col index> : <end col index>]
+
+            5. SElecting/accessing individual value : 
+                    <DF>.<col>[<row name or row numeric index>]
+                                   OR
+                    <DF>.at[<row label>,<col label>]
+                    <DF>.iat[<row index> , <col index>]
+
+            6. Selecting DF rows/cols based on Boolean Conditions : 
+                    it will return the boolean value for any condition.
+
+        ==> Adding / Modifying rows and columns in DF :
+                <df_obj>.<column_name> = <new_name> ::  this will add a new column
+                <df_obj>.at[ : , <column_name>] = <Values to be modified>
+                <df_obj>.loc[ : , <column_name>] = <Values to be modified>
+                <dfobj> = <dfobj>.assign(<colname>=<value for col>)
+                similar for row
+
+        ==> MOdifying a single cell : 
+                <DF>.iat[<row position>,<column position>] = <new value>
+                <DF>.<columnname>[<row name>] = <new value>
+
+        ==> Deleting / renaming cols and rows : 
+                del<df obj>[<colname>]
+
+        ==>Renaming rows or col : 
+                <DF>.rename(index={<names dictionary>} , columns = {<names dictionary>} , inplace = False)
+                eg. topDF.rename(index={'sec A' : 'A' , 'sec B' : 'B' , ....})
+                to make changes u need to write inplace= True 
+

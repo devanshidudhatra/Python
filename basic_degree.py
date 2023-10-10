@@ -1,6 +1,0 @@
-f = input("Enter temperature in farhenheit:")
-c = input("Enter temperature in celcius : ")
-C = 0.56*(int(f)-32)
-F = 32 + 1.8 *int(c)
-print(str(f) + " Farhenheits = " + str(C) + " Celcius")
-print(str(c) + " Celcius = " + str(F) + " Farhenheit") 
